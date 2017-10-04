@@ -1,0 +1,18 @@
+package com.rule
+
+import com.boot.drools.react.model.Decision
+
+rule "Offer for Diamond"
+	when 
+		decisionObject: Decision(score > 650)
+	then
+		decisionObject.setDesc("Application Approved");
+		decisionObject.setSucc(true);
+	end
+rule "Offer for Gold"
+	when 
+		decisionObject: Decision(score < 500)
+	then
+		decisionObject.setDesc("Application Rejected");
+		decisionObject.setSucc(false);
+	end
